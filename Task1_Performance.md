@@ -20,7 +20,7 @@ Build a UI that lets the two audiences above answer their questions from the shi
 
 ## Hard requirements
 
-- **One-command launch**. `pip install -e ".[dev]"` plus one launch command brings up the UI. Document both in your README.
+- **Documented launch**. Bringing up the UI should be straightforward from a clean clone. Document your install and launch steps in your README — a reviewer will follow them.
 - **Defensible for a twelfth model**. We will mentally substitute a `Model L` (or drop in a new `Model_L_profile_<N>/Model L profile <N>.xlsx`) and see if your design still works. Hard-coded model lists or hand-tuned views that only work for the shipped letters will be marked down.
 
 
@@ -28,9 +28,9 @@ Build a UI that lets the two audiences above answer their questions from the shi
 
 These will not pass the rubric. We will check.
 
-- Static HTML dump of the JSONL or a single big table with no audience differentiation.
+- Static HTML dump of the `.xlsx` or a single big table with no audience differentiation.
 - A UI that shows every column to every audience and calls it "configurable."
-- Hard-coded views or copy that only work for the specific models in `data/perf/`.
+- Hard-coded views or copy that only work for the specific models in `perf_data.zip`.
 
 ## What to submit
 
@@ -38,15 +38,8 @@ Two things.
 
 ### 1. Code
 
-A link to (or zip of) your project. Your project must run this two-command contract:
-
-```bash
-# Install + sanity check shipped data
-pip install -e ".[dev]" && python scripts/verify_perf_data.py
-
-# Launch the UI (your choice of framework)
-<your-launch-command>
-```
+A link to (or zip of) your project. Document your install and launch steps in your
+README — a reviewer will clone and follow them. Your choice of framework and packaging.
 
 ### 2. Video Explanation (5 min max)
 Create a video where you explain

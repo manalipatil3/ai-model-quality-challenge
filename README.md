@@ -13,8 +13,8 @@ set of **forbidden trivial baselines** that will not pass the rubric.
 |---|---|
 | `Task1_Performance.md` | Task 1 spec — performance UI for customer + internal audiences |
 | `Task2_Model_Quality.md` | Task 2 spec — benchmark/eval pruning inside `evalscope` |
-| `perf_data.zip` | Task 1 data — perf projections, Models A–L × 7 traffic profiles (`.xlsx`) |
-| `Evals/` | Task 2 data — model outputs + per-sample scores (LiveCodeBench, AA-LCR, MMMU) |
+| `perf_data.zip` | Task 1 data — perf projections, Models A–K × 7 traffic profiles (`.xlsx`) |
+| `Evals/` | Task 2 data — model outputs (`predictions/`) + per-sample scores (`reviews/`) for LiveCodeBench, AA-LCR, MMMU |
 
 > **Git LFS:** the files under `Evals/` are stored via [Git LFS](https://git-lfs.github.com/).
 > Install it (`git lfs install`) before cloning, or the `.jsonl` files will appear as
@@ -29,11 +29,8 @@ Turn an internal `.xlsx` perf projection sheet into something two audiences can 
 a customer/PM who needs a **go/no-go** signal, and an internal engineer who needs to
 **sanity-check** a projection. See [`Task1_Performance.md`](./Task1_Performance.md).
 
-Run contract:
-```bash
-pip install -e ".[dev]" && python scripts/verify_perf_data.py   # install + sanity check
-<your-launch-command>                                            # launch the UI
-```
+Run contract: document your own install and launch steps in your README — a reviewer
+will clone and follow them. Your choice of framework and packaging.
 
 ### Task 2 — Benchmark Compression for a Real Customer
 Prune coding (LiveCodeBench), long-context (AA-LCR), and (forward-looking) multimodal
@@ -62,7 +59,7 @@ Your submission **must** include:
 
 1. **A private GitHub repo** with your code.
    - Keep it **private**, and grant access to the reviewers listed in the form.
-   - Make it runnable from the command contracts above — a reviewer will clone and run it.
+   - Make it runnable from the instructions above — a reviewer will clone and run it.
    - For Task 2, pin the `evalscope` commit SHA you developed against in your fork's README.
 
 2. **Video walkthrough(s)** explaining your work — **required**.
