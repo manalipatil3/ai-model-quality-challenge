@@ -69,31 +69,19 @@ Three things.
 
 ### 1. Code
 
-A link to (or zip of) your evalscope fork. Your fork must run the three-command contract end to end:
-
-```bash
-# Reference run
-evalscope eval --model <model> --datasets live_code_bench --output ./results_full/
-
-# Pruned run (your pruner)
-evalscope eval --model <model> --datasets live_code_bench_pruned \
-    --dataset-args '{"pruning_strategy": "your_strategy", "prune_ratio": 0.1}' \
-    --output ./results_pruned/
-
-# Compare
-python -m evalscope_ext.tools.compare_runs --full ./results_full/ --pruned ./results_pruned/
-```
+A link to (or zip of) your evalscope fork. 
 
 ### 2. Handout A — "Why this works" (1 page, technical audience)
 
 Written for an engineer who could have built this themselves. Cover:
 
 - Why you chose this approach for Part A. What problem did you understand yourself to be solving?
+- How much have you pruned the dataset, defend why this subset is sufficient.
 - What you would do for Part B and why those choices stress image encoders specifically.
 - What assumptions you made about distribution, scale, and model behavior.
 - What would change if you had (a) more data, (b) a live model endpoint to query, or (c) more time?
 
-### 3. Handout B — "Why this matters and how to use it" (1 page, mixed audience: developers, test engineers, product, customer team)
+### 3. Handout B — "Why this matters and how to use it" (1/2 page, mixed audience: developers, test engineers, product, customer team)
 
 Written for someone who does not work on evaluation. Cover:
 
