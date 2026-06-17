@@ -1,5 +1,7 @@
 # Cerebras AI Engineer Challenge
 
+**Repository:** https://github.com/manalipatil3/ai-model-quality-challenge
+
 **Live URL (Task 1):** _Add deployed URL here_
 
 **Submit:** https://docs.google.com/forms/d/e/1FAIpQLSdwLrRJkKUgTd2sisyJO10VSf1-1vJ3NIywV5HtMlUSc7ijMw/viewform?usp=publish-editor
@@ -53,7 +55,8 @@ evalscope eval --model <model> --datasets live_code_bench_pruned \
 
 ## Submission
 
-- [ ] Private GitHub repo + reviewer access
+- [x] GitHub repo — https://github.com/manalipatil3/ai-model-quality-challenge
+- [ ] Private repo + reviewer access
 - [ ] Live Task 1 URL (here + form)
 - [ ] Task 1 video (≤ 5 min)
 - [ ] Task 2 video
