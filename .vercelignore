@@ -1,0 +1,8 @@
+# Prevent Vercel from treating this repo as a Python app when deploying Task 1 from root.
+# Task 2 Python code is not deployed to Vercel — reviewers run it locally.
+requirements.txt
+evalscope-upstream/
+evalscope_ext/
+Evals-20260616T210149Z-3-001/
+perf_data-20260616T205716Z-3-001/
+task2-site/

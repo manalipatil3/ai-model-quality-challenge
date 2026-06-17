@@ -37,7 +37,11 @@ Both tasks deploy as **two Vercel projects** from this repo ([vercel.com/new](ht
 
 ### Task 1 — `perf-ui/` (required live URL)
 
-| Setting | Value |
+**Important:** In Vercel project settings, either:
+- leave **Root Directory** empty (repo root — uses root `vercel.json`), **or**
+- set **Root Directory** to `perf-ui` (uses `perf-ui/vercel.json`)
+
+| Setting | Value (if using `perf-ui` root) |
 |---------|--------|
 | Root Directory | `perf-ui` |
 | Framework | Vite |
