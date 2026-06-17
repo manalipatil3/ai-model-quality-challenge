@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 2 — Benchmark Compression</title>
+  <style>
+    :root { --bg: #0f1419; --card: #1a2332; --text: #e7ecf3; --muted: #9aa8bc; --accent: #f97316; --border: #2d3a4f; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .sub { color: var(--muted); margin-bottom: 2rem; }
+    .grid { display: grid; gap: 1rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+    .card h2 { margin: 0 0 0.75rem; font-size: 1.1rem; color: var(--accent); }
+    code, pre { font-family: ui-monospace, Consolas, monospace; font-size: 0.9rem; }
+    pre { background: #0b1018; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; margin: 0.5rem 0 0; }
+    a { color: #60a5fa; }
+    ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
+    .badge { display: inline-block; background: #16301f; color: #86efac; border: 1px solid #166534; border-radius: 999px; padding: 0.15rem 0.65rem; font-size: 0.8rem; margin-right: 0.35rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Task 2 — Benchmark Compression</h1>
+    <p class="sub">Cerebras AI Engineer Challenge · evalscope extensions</p>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Evalscope fork</h2>
+        <p>Commit SHA: <code>fe8c5a4755bcdb5558c002fbe6fe7a03e8170ce4</code></p>
+        <p>Package: <code>evalscope-upstream/</code> + <code>evalscope_ext/</code></p>
+      </section>
+
+      <section class="card">
+        <h2>Deliverables</h2>
+        <p>
+          <span class="badge">live_code_bench_pruned</span>
+          <span class="badge">aa_lcr_pruned</span>
+          <span class="badge">mmmu_probe</span>
+          <span class="badge">compare_runs.py</span>
+        </p>
+        <table>
+          <thead><tr><th>Benchmark</th><th>Reduction</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td>LiveCodeBench v5</td><td>315 → 32</td><td>Ranking preserved</td></tr>
+            <tr><td>AA-LCR</td><td>100 → 10</td><td>Ranking preserved</td></tr>
+            <tr><td>MMMU probe</td><td>24 encoder-stress samples</td><td>OCR, charts, tables, diagrams</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Run locally (reviewer)</h2>
+        <pre>git clone https://github.com/manalipatil3/ai-model-quality-challenge.git
+cd ai-model-quality-challenge
+pip install -r requirements.txt
+python evalscope_ext/scripts/validate_all.py</pre>
+      </section>
+
+      <section class="card">
+        <h2>Handouts</h2>
+        <ul>
+          <li><a href="handout.html?f=Handout_A.md">Handout A — Why This Works (Technical)</a></li>
+          <li><a href="handout.html?f=Handout_B.md">Handout B — Why This Matters (Business)</a></li>
+          <li><a href="https://github.com/manalipatil3/ai-model-quality-challenge/blob/main/evalscope_ext/README.md">evalscope_ext README on GitHub</a></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Task 1 Performance UI</h2>
+        <p>See the live deployed perf UI (upload &amp; compare sweeps).</p>
+        <p><a id="task1-link" href="#">Open Task 1 live app →</a></p>
+      </section>
+    </div>
+  </div>
+  <script>
+    const task1 = new URLSearchParams(location.search).get('task1');
+    if (task1) document.getElementById('task1-link').href = task1;
+    else document.getElementById('task1-link').textContent = 'Link in root README after Task 1 deploy';
+  </script>
+</body>
+</html>

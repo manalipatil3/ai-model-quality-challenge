@@ -263,7 +263,7 @@ export function generateReasons(
 }
 
 function buildEvaluationFields(
-  sweep: ModelSweep,
+  _sweep: ModelSweep,
   row: ReturnType<typeof referenceRow>,
 ): Pick<
   WorkloadEvaluation,

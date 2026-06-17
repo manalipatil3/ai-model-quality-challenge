@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handout</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #0f1419; color: #e7ecf3; line-height: 1.65; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    a { color: #60a5fa; }
+    pre { background: #0b1018; border: 1px solid #2d3a4f; border-radius: 8px; padding: 1rem; overflow-x: auto; }
+    code { font-family: ui-monospace, Consolas, monospace; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #2d3a4f; padding: 0.5rem 0.75rem; text-align: left; }
+    h1, h2, h3 { color: #f97316; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <p><a href="index.html">← Task 2 home</a></p>
+    <div id="content">Loading…</div>
+  </div>
+  <script>
+    const file = new URLSearchParams(location.search).get('f') || 'Handout_A.md';
+    document.title = file.replace('.md', '');
+    fetch('handouts/' + file)
+      .then(r => r.text())
+      .then(md => { document.getElementById('content').innerHTML = marked.parse(md); })
+      .catch(() => { document.getElementById('content').textContent = 'Failed to load handout.'; });
+  </script>
+</body>
+</html>

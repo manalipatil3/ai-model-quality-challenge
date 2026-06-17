@@ -2,7 +2,9 @@
 
 **Repository:** https://github.com/manalipatil3/ai-model-quality-challenge
 
-**Live URL (Task 1):** _Add deployed URL here_
+**Live URL (Task 1):** _Deploy via Vercel — see [Deploy](#deploy)_
+
+**Task 2 docs (Vercel):** _Deploy `task2-site/` — handouts + run guide_
 
 **Submit:** https://docs.google.com/forms/d/e/1FAIpQLSdwLrRJkKUgTd2sisyJO10VSf1-1vJ3NIywV5HtMlUSc7ijMw/viewform?usp=publish-editor
 
@@ -25,7 +27,45 @@ npm test             # tests
 npm run build        # production → dist/
 ```
 
-**Reviewer check:** Upload `perf-ui/public/samples/Model L profile 1.xlsx` → verify all three views. Deploy `perf-ui/` (Vercel/Netlify) and set live URL above.
+**Reviewer check:** Upload `perf-ui/public/samples/Model L profile 1.xlsx` → verify all three views.
+
+---
+
+## Deploy
+
+Both tasks deploy as **two Vercel projects** from this repo ([vercel.com/new](https://vercel.com/new) → Import Git Repository).
+
+### Task 1 — `perf-ui/` (required live URL)
+
+| Setting | Value |
+|---------|--------|
+| Root Directory | `perf-ui` |
+| Framework | Vite |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+
+Or CLI (after `npx vercel login`):
+
+```bash
+cd perf-ui && npm run build && npx vercel --prod
+```
+
+### Task 2 — `task2-site/` (handouts + reviewer guide)
+
+Static docs site (Python evalscope code still runs locally from the repo).
+
+| Setting | Value |
+|---------|--------|
+| Root Directory | `task2-site` |
+| Framework | Other (no build) |
+
+```bash
+cd task2-site && npx vercel --prod
+```
+
+Or run both: `powershell -File scripts/deploy-vercel.ps1`
+
+After deploy, paste the **Task 1 URL** at the top of this README and in the submission form.
 
 ---
 
@@ -57,7 +97,8 @@ evalscope eval --model <model> --datasets live_code_bench_pruned \
 
 - [x] GitHub repo — https://github.com/manalipatil3/ai-model-quality-challenge
 - [ ] Private repo + reviewer access
-- [ ] Live Task 1 URL (here + form)
+- [ ] Live Task 1 URL (Vercel `perf-ui/`)
+- [ ] Task 2 docs on Vercel (`task2-site/`) — optional but recommended
 - [ ] Task 1 video (≤ 5 min)
 - [ ] Task 2 video
 - [ ] Handouts A & B
