@@ -1,0 +1,12 @@
+# Cerebras Model Quality Challenge — Python dependencies
+#
+# Python 3.10+ required.
+#
+# Recommended install (from repo root):
+#   pip install -r requirements.txt
+#
+# This installs the evalscope fork and evalscope_ext in editable mode.
+# evalscope-upstream pulls its own framework dependencies automatically.
+
+-e ./evalscope-upstream
+-e ./evalscope_ext

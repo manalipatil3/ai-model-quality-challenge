@@ -1,86 +1,66 @@
-# AI Engineer — Model Quality & Performance Challenge
+# Cerebras AI Engineer Challenge
 
-Welcome, and thanks for taking the time. This challenge has two independent tasks.
+**Live URL (Task 1):** _Add deployed URL here_
 
-Read each task's spec in full before starting. Each lists hard requirements and a
-set of **forbidden trivial baselines** that will not pass the rubric.
+**Submit:** https://docs.google.com/forms/d/e/1FAIpQLSdwLrRJkKUgTd2sisyJO10VSf1-1vJ3NIywV5HtMlUSc7ijMw/viewform?usp=publish-editor
 
----
+| Task | Path | Summary |
+|------|------|---------|
+| Task 1 — Performance UI | `perf-ui/` | Upload `.xlsx` sweeps → Customer / Engineer / Compare views |
+| Task 2 — Benchmark compression | `evalscope_ext/`, `evalscope-upstream/` | Pruned LCB + AA-LCR + MMMU probe in evalscope |
 
-## What's in this repo
-
-| Path | What it is |
-|---|---|
-| `Task1_Performance.md` | Task 1 spec — performance UI for customer + internal audiences |
-| `Task2_Model_Quality.md` | Task 2 spec — benchmark/eval pruning inside `evalscope` |
-| `perf_data.zip` | Task 1 data — perf projections, Models A–K × 7 traffic profiles (`.xlsx`) |
-| `Evals/` | Task 2 data — model outputs (`predictions/`) + per-sample scores (`reviews/`) for LiveCodeBench, AA-LCR, MMMU |
-
-> **Git LFS:** the files under `Evals/` are stored via [Git LFS](https://git-lfs.github.com/).
-> Install it (`git lfs install`) before cloning, or the `.jsonl` files will appear as
-> small pointer stubs instead of the real data.
+**Requires:** Node 18+, Python 3.10+, data folders `perf_data-20260616T205716Z-3-001/` and `Evals-20260616T210149Z-3-001/` at repo root.
 
 ---
 
-## The two tasks
+## Task 1
 
-### Task 1 — Performance UI for Customer and Product
-Turn an internal `.xlsx` perf projection sheet into something two audiences can act on:
-a customer/PM who needs a **go/no-go** signal, and an internal engineer who needs to
-**sanity-check** a projection. See [`Task1_Performance.md`](./Task1_Performance.md).
-
-Run contract: document your own install and launch steps in your README — a reviewer
-will clone and follow them. Your choice of framework and packaging. **Also deploy it:**
-ship a publicly reachable URL (a free host is fine — Vercel, Netlify, Cloudflare Pages,
-GitHub Pages, …) so a reviewer can click through without cloning, and let them **upload
-one or more perf sweeps to render and compare the views live** (we'll test it with a new
-model). See [`Task1_Performance.md`](./Task1_Performance.md#deploying-for-free).
-
-### Task 2 — Benchmark Compression for a Real Customer
-Prune coding (LiveCodeBench), long-context (AA-LCR), and (forward-looking) multimodal
-(MMMU) benchmarks to the smallest sample set that still gives a useful good-or-not
-signal. Your pruner **must live inside [`evalscope`](https://github.com/modelscope/evalscope)**
-as an upstream-quality extension. See [`Task2_Model_Quality.md`](./Task2_Model_Quality.md).
-
-Run contract:
 ```bash
-evalscope eval --model <model> --datasets live_code_bench --output ./results_full/
-evalscope eval --model <model> --datasets live_code_bench_pruned \
-    --dataset-args '{"pruning_strategy": "your_strategy", "prune_ratio": 0.1}' \
-    --output ./results_pruned/
-python -m evalscope_ext.tools.compare_runs --full ./results_full/ --pruned ./results_pruned/
+cd perf-ui
+npm install
+npm run dev          # http://localhost:5173
+npm test             # tests
+npm run build        # production → dist/
 ```
 
-Each task's spec defines exactly what to submit (code, written handouts, and/or video).
+**Reviewer check:** Upload `perf-ui/public/samples/Model L profile 1.xlsx` → verify all three views. Deploy `perf-ui/` (Vercel/Netlify) and set live URL above.
 
 ---
 
-## How to submit
+## Task 2
 
-**Submit via this form:** https://docs.google.com/forms/d/e/1FAIpQLSdwLrRJkKUgTd2sisyJO10VSf1-1vJ3NIywV5HtMlUSc7ijMw/viewform?usp=publish-editor
+**Evalscope SHA:** `fe8c5a4755bcdb5558c002fbe6fe7a03e8170ce4`
 
-Your submission **must** include:
+```bash
+pip install -r requirements.txt
 
-1. **A private GitHub repo** with your code.
-   - Keep it **private**, and grant access to the reviewers listed in the form.
-   - Make it runnable from the instructions above — a reviewer will clone and run it.
-   - For Task 2, pin the `evalscope` commit SHA you developed against in your fork's README.
+python evalscope_ext/scripts/validate_all.py          # full check → ALL CHECKS PASSED
+python evalscope_ext/scripts/test_part_a_manual.py    # Part A data validation
+python evalscope_ext/tests/test_pruners.py          # Part A unit tests
+python evalscope_ext/tests/test_mmmu_probe.py         # Part B unit tests
+```
 
-2. **A live URL for the Task 1 UI** — **required**.
-   - A publicly reachable link to your deployed frontend where a reviewer can **upload one
-     or more perf sweeps, compare them, and get the views** (the shipped sweeps may be
-     pre-loaded as a sample).
-   - Put it at the top of your README **and paste it into the submission form above**.
-   - A free host is expected — see
-     [`Task1_Performance.md`](./Task1_Performance.md#deploying-for-free) for options.
-   - The repo stays private; only the deployed UI is public (the perf data is synthetic).
+**Handouts:** `evalscope_ext/handouts/Handout_A.md`, `Handout_B.md`
 
-3. **Video walkthrough(s)** explaining your work — **required**.
-   - Task 1: a ≤5-minute video covering the questions in `Task1_Performance.md`
-     (what you cut and why, framework chosen vs ruled out, your assumptions, and your
-     read on the model sizes / profile use-cases).
-   - Task 2: walk through your pruning approach and the trade-offs in your handouts.
-   - Link the video(s) in the form (Loom, Drive, YouTube-unlisted, etc.). Make sure
-     reviewers can actually open the link.
+**Optional live eval:**
+```bash
+evalscope eval --model <model> --datasets live_code_bench_pruned \
+  --dataset-args '{"pruning_strategy": "disagreement", "prune_ratio": 0.1}' \
+  --output ./results_pruned/
+```
 
-A submission without a private repo, a live Task 1 URL, **and** video(s) is incomplete.
+---
+
+## Submission
+
+- [ ] Private GitHub repo + reviewer access
+- [ ] Live Task 1 URL (here + form)
+- [ ] Task 1 video (≤ 5 min)
+- [ ] Task 2 video
+- [ ] Handouts A & B
+
+### Videos
+
+**Task 1:** Live URL demo — audiences, what you cut, stack choice, upload new model, assumptions, model sizes (A–K), profile use cases (1–7).
+
+**Task 2:** Pruning strategy (disagreement + difficulty + diversity), results (LCB 315→32, AA-LCR 100→10, ranking preserved), `validate_all.py` demo, MMMU encoder probe (24 samples), handout highlights.

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evalscope-ext"
+version = "0.1.0"
+description = "Benchmark compression extensions for evalscope (Cerebras challenge Task 2)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+evalscope-ext-build-indices = "evalscope_ext.tools.build_pruned_indices:main"
+evalscope-ext-compare = "evalscope_ext.tools.compare_runs:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["evalscope_ext*"]
+
+[tool.setuptools.package-data]
+evalscope_ext = ["data/*.json"]

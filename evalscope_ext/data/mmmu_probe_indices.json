@@ -1,0 +1,112 @@
+{
+  "dataset": "mmmu_probe",
+  "count": 24,
+  "probes": [
+    {
+      "subject": "Chemistry",
+      "index": 11
+    },
+    {
+      "subject": "Computer_Science",
+      "index": 10
+    },
+    {
+      "subject": "Accounting",
+      "index": 22
+    },
+    {
+      "subject": "Biology",
+      "index": 28
+    },
+    {
+      "subject": "Chemistry",
+      "index": 25
+    },
+    {
+      "subject": "Chemistry",
+      "index": 28
+    },
+    {
+      "subject": "Geography",
+      "index": 15
+    },
+    {
+      "subject": "Literature",
+      "index": 4
+    },
+    {
+      "subject": "Materials",
+      "index": 27
+    },
+    {
+      "subject": "Materials",
+      "index": 9
+    },
+    {
+      "subject": "Biology",
+      "index": 23
+    },
+    {
+      "subject": "Clinical_Medicine",
+      "index": 12
+    },
+    {
+      "subject": "Architecture_and_Engineering",
+      "index": 23
+    },
+    {
+      "subject": "Art_Theory",
+      "index": 3
+    },
+    {
+      "subject": "Art_Theory",
+      "index": 0
+    },
+    {
+      "subject": "Art_Theory",
+      "index": 10
+    },
+    {
+      "subject": "Art_Theory",
+      "index": 26
+    },
+    {
+      "subject": "Art_Theory",
+      "index": 15
+    },
+    {
+      "subject": "Chemistry",
+      "index": 9
+    },
+    {
+      "subject": "Chemistry",
+      "index": 17
+    },
+    {
+      "subject": "Computer_Science",
+      "index": 27
+    },
+    {
+      "subject": "Diagnostics_and_Laboratory_Medicine",
+      "index": 15
+    },
+    {
+      "subject": "Economics",
+      "index": 13
+    },
+    {
+      "subject": "Economics",
+      "index": 24
+    }
+  ],
+  "categories": [
+    "ocr",
+    "charts",
+    "tables",
+    "diagrams",
+    "scientific_figures",
+    "geometry",
+    "medical_images",
+    "low_contrast"
+  ]
+}
