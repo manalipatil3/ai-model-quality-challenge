@@ -2,9 +2,9 @@
 
 **Repository:** https://github.com/manalipatil3/ai-model-quality-challenge
 
-**Live URL (Task 1):** _Deploy via Vercel — see [Deploy](#deploy)_
+**Live URL (Task 1):** https://ai-model-quality-task1.vercel.app
 
-**Task 2 docs (Vercel):** _Deploy `task2-site/` — handouts + run guide_
+**Task 2 docs (Vercel):** https://ai-model-quality-task2.vercel.app
 
 **Submit:** https://docs.google.com/forms/d/e/1FAIpQLSdwLrRJkKUgTd2sisyJO10VSf1-1vJ3NIywV5HtMlUSc7ijMw/viewform?usp=publish-editor
 
@@ -34,6 +34,8 @@ npm run build        # production → dist/
 ## Deploy
 
 Both tasks deploy as **two Vercel projects** from this repo ([vercel.com/new](https://vercel.com/new) → Import Git Repository).
+- Task 1 project: `ai-model-quality-task1`
+- Task 2 project: `ai-model-quality-task2`
 
 ### Task 1 — `perf-ui/` (required live URL)
 
@@ -101,8 +103,8 @@ evalscope eval --model <model> --datasets live_code_bench_pruned \
 
 - [x] GitHub repo — https://github.com/manalipatil3/ai-model-quality-challenge
 - [ ] Private repo + reviewer access
-- [ ] Live Task 1 URL (Vercel `perf-ui/`)
-- [ ] Task 2 docs on Vercel (`task2-site/`) — optional but recommended
+- [x] Live Task 1 URL (Vercel `perf-ui/`)
+- [x] Task 2 docs on Vercel (`task2-site/`) — optional but recommended
 - [ ] Task 1 video (≤ 5 min)
 - [ ] Task 2 video
 - [ ] Handouts A & B
