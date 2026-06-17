@@ -153,6 +153,14 @@ function walkXlsx(dir) {
   return results
 }
 
+if (!fs.existsSync(PERF_DATA)) {
+  if (fs.existsSync(OUT_FILE)) {
+    console.warn(`Perf data folder missing at ${PERF_DATA}; reusing existing ${OUT_FILE}`)
+    process.exit(0)
+  }
+  throw new Error(`Perf data folder missing at ${PERF_DATA} and no prebuilt default-models.json found`)
+}
+
 const allFiles = walkXlsx(PERF_DATA)
 const defaultFiles = allFiles.filter((f) => {
   const meta = parseMetadata(f)
